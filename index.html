@@ -1,14 +1,770 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedro Salazar | Portafolio</title>
+  <meta name="description" content="Portafolio de Pedro Pablo Salazar Silva. Ingeniero en Informática, Ciencia de Datos, BI y automatización.">
+  <title>Pedro Salazar | Data Analyst & BI</title>
+
+  <style>
+    :root {
+      --bg: #090e1b;
+      --panel: #111b30;
+      --panel2: #16223a;
+      --line: #263653;
+      --text: #eef5ff;
+      --muted: #a9bad4;
+      --accent: #69e2d0;
+      --blue: #85a9ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 14, 27, 0.95);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 110px 0 90px;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(105, 226, 208, 0.11),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(133, 169, 255, 0.11),
+          transparent 35%
+        );
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.15;
+      margin: 18px 0;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 23px;
+      color: var(--blue);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .lead {
+      max-width: 730px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #09131c;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin: 0 0 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 750px;
+      margin-bottom: 32px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 21px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .meta {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      padding: 9px 15px;
+      border-radius: 9px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .contact-box {
+      background: linear-gradient(
+        135deg,
+        #13243c,
+        #101b30
+      );
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 35px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 75px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .contact-box {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Pedro Pablo Salazar Silva</h1>
-  <h2>Ingeniero en Informática | Data Analyst | BI</h2>
-  <p>Bienvenido a mi portafolio profesional.</p>
-  <p>Próximamente: proyectos de datos, automatización y desarrollo.</p>
+
+  <!-- NAVEGACION -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#inicio" class="logo">PS.</a>
+
+        <div class="nav-links">
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="#habilidades">Habilidades</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="eyebrow">
+          Data Analytics · Business Intelligence · Automation
+        </div>
+
+        <h1>
+          Hola, soy<br>
+          <span>Pedro Salazar.</span>
+        </h1>
+
+        <div class="subtitle">
+          Ingeniero en Informática | Ciencia de Datos
+        </div>
+
+        <p class="lead">
+          Transformo datos en información útil para la
+          toma de decisiones. Cuento con experiencia
+          en análisis de datos, desarrollo de dashboards,
+          automatización de procesos y mejora continua,
+          utilizando tecnologías como SQL, Python,
+          Power BI y Google BigQuery.
+        </p>
+
+        <div class="buttons">
+          <a href="#proyectos" class="btn btn-primary">
+            Ver proyectos
+          </a>
+
+          <a href="#contacto" class="btn btn-outline">
+            Contactarme
+          </a>
+
+          <a
+            href="https://github.com/PedroSalazars"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section id="sobre-mi">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+
+        <p class="section-desc">
+          Soy Ingeniero en Informática titulado de
+          Duoc UC, con mención en Ciencia de Datos.
+          Me interesa desarrollar soluciones que
+          conecten tecnología, análisis de información
+          y necesidades del negocio.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Mi enfoque</h3>
+            <p>
+              Me especializo en el análisis,
+              validación y transformación de datos,
+              construcción de indicadores de gestión
+              y automatización de tareas mediante
+              herramientas tecnológicas.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Objetivo profesional</h3>
+            <p>
+              Continuar desarrollándome en Data
+              Analytics, Business Intelligence,
+              Data Engineering y automatización,
+              aportando soluciones prácticas,
+              documentación y mejora continua.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section id="experiencia">
+      <div class="container">
+        <h2 class="section-title">
+          Experiencia profesional
+        </h2>
+
+        <p class="section-desc">
+          Experiencia en entornos empresariales,
+          trabajando con información, herramientas
+          de análisis y procesos tecnológicos.
+        </p>
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>SONDA</h3>
+
+            <div class="meta">
+              Gestor de Mejora de Procesos
+              | Mayo - Agosto 2026
+            </div>
+
+            <ul>
+              <li>
+                Coordinación y seguimiento de
+                requerimientos tecnológicos,
+                incidentes y cambios operacionales.
+              </li>
+
+              <li>
+                Desarrollo de automatizaciones
+                con Python para optimizar tareas
+                repetitivas y procesamiento
+                de información.
+              </li>
+
+              <li>
+                Elaboración y actualización de
+                dashboards en Power BI para
+                seguimiento de indicadores.
+              </li>
+
+              <li>
+                Validación de información,
+                documentación de procedimientos
+                y coordinación con equipos
+                técnicos multidisciplinarios.
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>WOM Chile</h3>
+
+            <div class="meta">
+              Práctica profesional |
+              Marketing & Analytics | 2025
+            </div>
+
+            <ul>
+              <li>
+                Consultas, análisis y validación
+                de información comercial
+                utilizando SQL y Google BigQuery.
+              </li>
+
+              <li>
+                Participación en la elaboración
+                de dashboards e indicadores
+                de gestión con Power BI.
+              </li>
+
+              <li>
+                Apoyo en la migración y
+                estandarización de reportes
+                desde Looker hacia Power BI.
+              </li>
+
+              <li>
+                Documentación de procesos,
+                organización de información
+                y elaboración de glosarios
+                de datos.
+              </li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades">
+      <div class="container">
+        <h2 class="section-title">
+          Habilidades técnicas
+        </h2>
+
+        <p class="section-desc">
+          Tecnologías y herramientas utilizadas
+          en mi formación, proyectos y experiencia
+          profesional.
+        </p>
+
+        <div class="card">
+          <h3>Datos y Business Intelligence</h3>
+
+          <div class="skills">
+            <span class="skill">SQL</span>
+            <span class="skill">Google BigQuery</span>
+            <span class="skill">Power BI</span>
+            <span class="skill">Looker Studio</span>
+            <span class="skill">Excel</span>
+            <span class="skill">ETL / ELT</span>
+            <span class="skill">Análisis de datos</span>
+            <span class="skill">KPIs y dashboards</span>
+            <span class="skill">Calidad de datos</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>Programación y automatización</h3>
+
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">pandas</span>
+            <span class="skill">openpyxl</span>
+            <span class="skill">Automatización</span>
+            <span class="skill">APIs REST</span>
+            <span class="skill">Git / GitHub</span>
+            <span class="skill">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+          <h3>Desarrollo y otras tecnologías</h3>
+
+          <div class="skills">
+            <span class="skill">Google Cloud Platform</span>
+            <span class="skill">Angular</span>
+            <span class="skill">Ionic</span>
+            <span class="skill">Firebase</span>
+            <span class="skill">Firestore</span>
+            <span class="skill">Google Maps API</span>
+            <span class="skill">Documentación técnica</span>
+            <span class="skill">IA Generativa - Fundamentos</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+      <div class="container">
+        <h2 class="section-title">
+          Proyectos
+        </h2>
+
+        <p class="section-desc">
+          Proyectos académicos y soluciones
+          desarrolladas para aplicar conocimientos
+          de programación, integración de servicios
+          y gestión de información.
+        </p>
+
+        <div class="grid">
+
+          <article class="card">
+            <div class="meta">
+              Proyecto académico | FireMaps
+            </div>
+
+            <h3>FireMaps</h3>
+
+            <p>
+              Aplicación web y móvil orientada
+              a la gestión y coordinación de
+              emergencias para Bomberos de Chiloé.
+            </p>
+
+            <p>
+              Incluye registro y visualización
+              de incidentes, geolocalización,
+              integración con mapas y gestión
+              de información en tiempo real.
+            </p>
+
+            <div class="skills" style="margin-bottom: 20px;">
+              <span class="skill">Ionic</span>
+              <span class="skill">Angular</span>
+              <span class="skill">Firebase</span>
+              <span class="skill">Firestore</span>
+              <span class="skill">Google Maps</span>
+            </div>
+
+            <a
+              class="project-link"
+              href="https://github.com/PedroSalazars/FireMaps"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver repositorio en GitHub →
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="meta">
+              Automatización | Experiencia profesional
+            </div>
+
+            <h3>Automatización de procesos con Python</h3>
+
+            <p>
+              Desarrollo de herramientas internas
+              para reducir tareas manuales,
+              procesar información y apoyar
+              flujos operacionales.
+            </p>
+
+            <p>
+              Durante mi experiencia en SONDA
+              trabajé con Python y bibliotecas
+              de procesamiento de datos para
+              automatizar actividades relacionadas
+              con archivos, reportes y seguimiento
+              de requerimientos.
+            </p>
+
+            <div class="skills">
+              <span class="skill">Python</span>
+              <span class="skill">pandas</span>
+              <span class="skill">openpyxl</span>
+              <span class="skill">Excel</span>
+            </div>
+
+            <p style="font-size: 13px; margin-top: 20px;">
+              Proyecto interno. Código y datos
+              corporativos no publicados por
+              motivos de confidencialidad.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMACION -->
+    <section id="formacion">
+      <div class="container">
+        <h2 class="section-title">
+          Formación y certificaciones
+        </h2>
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>Ingeniería en Informática</h3>
+
+            <div class="meta">
+              Duoc UC | Titulado en 2026
+            </div>
+
+            <p>
+              Mención en Ciencia de Datos.
+              Formación en programación,
+              bases de datos, análisis de
+              información, estadística y
+              fundamentos de Machine Learning.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Formación complementaria</h3>
+
+            <p>
+              Certificaciones y estudios
+              relacionados con:
+            </p>
+
+            <ul>
+              <li>Big Data</li>
+              <li>DevOps Essentials</li>
+              <li>Inteligencia Artificial Generativa</li>
+              <li>Ciberseguridad</li>
+              <li>Hacking Ético</li>
+              <li>JavaScript</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-box">
+
+          <div class="eyebrow">
+            Contacto profesional
+          </div>
+
+          <h2 class="section-title">
+            ¿Trabajamos juntos?
+          </h2>
+
+          <p class="section-desc">
+            Estoy interesado en oportunidades
+            relacionadas con análisis de datos,
+            Business Intelligence, automatización
+            y tecnología. Cuento con
+            disponibilidad inmediata.
+          </p>
+
+          <div class="contact-links">
+
+            <a
+              href="mailto:psalazsil@gmail.com"
+              class="btn btn-primary"
+            >
+              Enviar correo
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/pedro-pablo-salazar"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com/PedroSalazars"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+            >
+              GitHub
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Pedro Pablo Salazar Silva.
+      Portafolio profesional.
+    </div>
+  </footer>
+
 </body>
 </html>
